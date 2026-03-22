@@ -14,53 +14,7 @@ pnpm add guide-pilot
 
 ---
 
-## Architecture Overview
-
-### Core Philosophy
-
-- **Declarative where possible** — data attributes for zero-JS setup
-- **Programmatic where necessary** — full `TourConfig` API for complete control
-- **Fail-safe always** — no crashes in production; errors are swallowed with optional callbacks
-- **Framework-aligned** — React-first, not DOM-hacked
-
-### Key Principles
-
-- SSR-safe (no DOM access during render)
-- External singleton store (cross-root compatibility)
-- Pure utilities (testable, deterministic)
-- Zero dependency styling (CSS variables only)
-
-### High-Level Flow
-
-```
-startTour()
-  → tourStore.dispatch()
-  → Provider re-renders
-  → Step scanning + merging
-  → waitForElement()
-  → StepRenderer (Portal)
-```
-
-### External Singleton Store
-
-GuidePilot uses a **module-level singleton store** rather than React context for state. This allows it to work across multiple React roots (e.g. Module Federation):
-
-```ts
-interface TourStore {
-  getState(): TourState;
-  dispatch(action: TourAction): void;
-  subscribe(listener: () => void): () => void;
-
-  registerTour(config: TourConfig): void;
-  getRegistry(): Map<string, TourConfig>;
-}
-```
-
-The Provider subscribes to this store via `useSyncExternalStore`, which gives:
-
-- Concurrent mode safety
-- SSR compatibility (server snapshot returns idle state)
-- Tear-free reads across concurrent renders
+For architecture internals — module map, data flow, state machine, positioning system, and build output — see [Technical Architecture](technical-architecture.md). For execution rules and step lifecycle, see [Execution Model](core-concepts/execution-model.md).
 
 ---
 
