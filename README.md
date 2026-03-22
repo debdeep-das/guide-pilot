@@ -355,7 +355,6 @@ Full variable reference: [docs/styling/theming.md](docs/styling/theming.md)
 | | |
 |---|---|
 | [Introduction](docs/introduction.md) | What GuidePilot is, the problem it solves, key differentiators, maturity |
-| [Features & Capabilities](docs/features-and-capabilities.md) | Full feature matrix with code examples |
 | [Technical Architecture](docs/technical-architecture.md) | Internals, data flow, state machine, MFE design, build output |
 
 ### Getting Started
