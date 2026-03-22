@@ -1,6 +1,6 @@
 # GuidePilot
 
-**Add product tours to any React app in under 5 minutes — no SaaS, no lock-in, no compromises.**
+**Product tours for React apps. Self-hosted, TypeScript-first, no SaaS.**
 
 [![npm version](https://img.shields.io/npm/v/guide-pilot.svg)](https://www.npmjs.com/package/guide-pilot)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/guide-pilot)](https://bundlephobia.com/package/guide-pilot)
@@ -11,43 +11,11 @@
 
 ---
 
-## What a Tour Looks Like
+## Quick Example
 
-No GIF yet — here's the experience in plain text:
-
-```
-1. User lands on the dashboard
-   → A centered modal appears: "Welcome! Let's show you around."
-
-2. User clicks "Let's go"
-   → Page dims. The sidebar lights up with a cutout highlight.
-   → Tooltip: "Navigation — Use this to move between sections."
-
-3. User clicks "Next"
-   → Spotlight moves to the Create button.
-   → Tooltip: "Create a project — Click here to get started."
-
-4. User clicks "Next"
-   → Overlay lifts. A final modal: "You're all set!"
-```
-
-```
-Step 2 of 4                              [Skip tour]
-┌─────────────────────────────────────┐
-│  Navigation                         │
-│  Use this to move between sections. │
-│                          [←] [Next →]│
-└─────────────────────────────────────┘
-         ▲
-  [ Sidebar Nav ]   ← highlighted
-```
-
----
-
-## The Simplest Tour You'll Ever Write
+Most tours need 2–3 lines of code. Annotate your elements, call `startTour`. Done.
 
 ```html
-<!-- Step 1: annotate your elements — no JavaScript required -->
 <button
   data-guide-pilot-tour="onboarding"
   data-guide-pilot-step="1"
@@ -59,29 +27,30 @@ Step 2 of 4                              [Skip tour]
 ```
 
 ```tsx
-// Step 2: start it
 const { startTour } = useTour();
 startTour('onboarding');
 ```
 
-That's it. No config files. No tour objects. No build steps.
+No config files. No tour objects. No build steps.
 
 ---
 
-## Philosophy
+## Features
 
-Most onboarding tools are SaaS products that bolt onto your app from the outside. GuidePilot is the opposite — it lives inside your codebase, works like any other React library, and gives you complete control.
-
-- **Keep it simple** — data attributes over config objects where possible
-- **Keep it developer-first** — TypeScript types, hook API, testable utilities
-- **Keep it inside your codebase** — no dashboards, no scripts from a CDN, no lock-in
-- **Keep it safe** — fail-silent in production, XSS-sanitized by default, SSR-compatible
+- **Zero-config setup** — annotate elements with `data-*` attributes, call `startTour('id')`
+- **Full TypeScript API** — typed config objects, lifecycle hooks, autocompletion
+- **4 step types** — Tooltip, Spotlight, Modal, InlineHint
+- **SSR / Next.js safe** — no DOM access at render time, no hydration mismatches
+- **Micro frontend ready** — works across Module Federation roots; optional postMessage bridge for iframes
+- **Accessible** — ARIA roles, focus management, keyboard navigation, screen reader support
+- **Themeable** — CSS custom properties, no runtime CSS-in-JS
+- **< 25KB gzip** — tree-shakeable ESM, no external dependencies beyond `@floating-ui`
 
 ---
 
 ## Why GuidePilot?
 
-Most tour libraries make you choose between **easy** (SaaS with lock-in) or **flexible** (DIY with complexity). GuidePilot gives you both.
+Most onboarding tools make you choose between easy (SaaS, lock-in) or flexible (DIY, complexity). GuidePilot gives you both.
 
 | | GuidePilot | React Joyride | Shepherd.js | Intro.js | Driver.js |
 |---|:---:|:---:|:---:|:---:|:---:|
@@ -95,16 +64,6 @@ Most tour libraries make you choose between **easy** (SaaS with lock-in) or **fl
 
 ---
 
-## Use Cases
-
-- **Product onboarding** — guide new users through a SaaS app on first login
-- **Feature announcements** — spotlight new UI after a release
-- **Admin dashboards** — walk internal users through complex workflows
-- **Internal tools** — create guided flows for non-technical staff
-- **Multi-step forms** — highlight fields in sequence and explain as you go
-
----
-
 ## Install
 
 ```bash
@@ -115,11 +74,11 @@ npm install guide-pilot
 
 ---
 
-## Quick Start
-
-### The Golden Path — Data Attributes
+## 🚀 The Simplest Way to Use GuidePilot
 
 Wrap your app once. Annotate elements. Call `startTour`. No tour objects, no imports in every file.
+
+**1. Add the Provider**
 
 ```tsx
 // main.tsx
@@ -135,8 +94,9 @@ export default function App() {
 }
 ```
 
+**2. Annotate your elements**
+
 ```html
-<!-- Anywhere in your app -->
 <nav
   data-guide-pilot-tour="onboarding"
   data-guide-pilot-step="1"
@@ -156,15 +116,18 @@ export default function App() {
 </button>
 ```
 
+**3. Start the tour**
+
 ```tsx
-// Trigger from anywhere
 const { startTour } = useTour();
 startTour('onboarding');
 ```
 
-### When You Need More Control — Programmatic Config
+---
 
-Full TypeScript, lifecycle callbacks, async navigation:
+## Programmatic Config
+
+When you need full control — TypeScript types, lifecycle callbacks, async navigation:
 
 ```tsx
 import type { TourConfig } from 'guide-pilot';
@@ -205,14 +168,11 @@ const onboardingTour: TourConfig = {
 
 ## Real-World Example — Dashboard Onboarding
 
-A complete onboarding flow across three screens:
-
 ```tsx
 const dashboardTour: TourConfig = {
   id: 'dashboard-onboarding',
   missingTargetStrategy: 'retry',
   onComplete: () => markUserOnboarded(currentUser.id),
-
   steps: [
     {
       id: 'welcome',
@@ -244,10 +204,43 @@ const dashboardTour: TourConfig = {
       order: 4,
       type: 'modal',
       title: "You're all set!",
-      content: 'Explore at your own pace. You can replay this tour anytime from the Help menu.',
+      content: 'Explore at your own pace. Replay this tour anytime from the Help menu.',
     },
   ],
 };
+```
+
+---
+
+## What a Tour Looks Like
+
+No GIF yet — here's the experience in plain text:
+
+```
+1. User lands on the dashboard
+   → Centered modal: "Welcome! Let's show you around."
+
+2. User clicks "Let's go"
+   → Page dims. Sidebar highlighted with a cutout.
+   → Tooltip: "Navigation — Use this to move between sections."
+
+3. User clicks "Next"
+   → Spotlight moves to the Create button.
+   → Tooltip: "Create a project — Click here to get started."
+
+4. User clicks "Next"
+   → Overlay lifts. Final modal: "You're all set!"
+```
+
+```
+Step 2 of 4                              [Skip tour]
+┌─────────────────────────────────────┐
+│  Navigation                         │
+│  Use this to move between sections. │
+│                          [←] [Next →]│
+└─────────────────────────────────────┘
+         ▲
+  [ Sidebar Nav ]   ← highlighted
 ```
 
 ---
@@ -258,25 +251,8 @@ const dashboardTour: TourConfig = {
 |---|---|
 | `tooltip` (default) | Pointing to a specific element — buttons, inputs, icons |
 | `spotlight` | Highlighting a section — sidebars, dashboards, panels |
-| `modal` | Welcome screens, summaries, steps with no target element |
+| `modal` | Welcome screens, summaries, steps without a target element |
 | `inline` | Non-blocking tips that don't interrupt the user |
-
-```tsx
-// Tooltip — default, anchored to element
-{ target: '#save-btn', content: 'Save your work here.', placement: 'top' }
-
-// Spotlight — highlights element, blocks background
-{ type: 'spotlight', target: '#analytics', title: 'Your analytics' }
-
-// Interactive spotlight — user can click the element
-{ type: 'spotlight', target: '#search', allowInteraction: true }
-
-// Modal — centered, no target
-{ type: 'modal', title: 'Welcome!', content: 'Ready to get started?' }
-
-// Inline — no overlay, non-blocking
-{ type: 'inline', target: '#help-icon', content: 'Click for help.' }
-```
 
 ---
 
@@ -325,13 +301,13 @@ shared: {
 }
 ```
 
-Mount one `<GuidePilotProvider>` in the shell. All MFEs share tour state automatically — no wiring needed in each MFE.
+Mount one `<GuidePilotProvider>` in the shell. All MFEs share tour state automatically.
 
 ---
 
 ## Theming
 
-Override any visual property with CSS variables — no runtime overhead:
+Override any visual property with CSS variables:
 
 ```css
 :root {
@@ -348,17 +324,38 @@ Full variable reference: [docs/styling/theming.md](docs/styling/theming.md)
 
 ---
 
+## Non-Goals (v1)
+
+GuidePilot focuses purely on in-app, developer-driven tours. The following are out of scope:
+
+- No visual/no-code tour editor
+- No analytics or step completion tracking
+- No SaaS dashboard or external scripts
+- No multi-page / cross-route tour persistence
+- No user segmentation or A/B testing
+
+---
+
+## Philosophy
+
+GuidePilot lives inside your codebase, not outside it.
+
+- **Simple by default** — data attributes over config where possible
+- **Developer-first** — TypeScript types, hook API, testable utilities
+- **No lock-in** — no dashboards, no CDN scripts, no vendor dependency
+- **Safe** — fail-silent in production, XSS-sanitized, SSR-compatible
+
+---
+
 ## Documentation
 
 ### Overview
-
 | | |
 |---|---|
 | [Introduction](docs/introduction.md) | What GuidePilot is, the problem it solves, key differentiators, maturity |
 | [Technical Architecture](docs/technical-architecture.md) | Internals, data flow, state machine, MFE design, build output |
 
 ### Getting Started
-
 | | |
 |---|---|
 | [Getting Started](docs/getting-started.md) | Install + all setup options |
@@ -366,7 +363,6 @@ Full variable reference: [docs/styling/theming.md](docs/styling/theming.md)
 | [Programmatic Tour Guide](docs/guides/programmatic-tour.md) | Async navigation, dynamic steps, callbacks |
 
 ### API Reference
-
 | | |
 |---|---|
 | [useTour()](docs/api/use-tour.md) | Hook API — state, actions, guarantees |
@@ -374,7 +370,6 @@ Full variable reference: [docs/styling/theming.md](docs/styling/theming.md)
 | [TourStep](docs/api/tour-step.md) | All step-level options including lifecycle hooks |
 
 ### Core Concepts
-
 | | |
 |---|---|
 | [Execution Model](docs/core-concepts/execution-model.md) | Step resolution, ordering, lifecycle, navigation |
@@ -382,7 +377,6 @@ Full variable reference: [docs/styling/theming.md](docs/styling/theming.md)
 | [Portal & Layering](docs/rendering/portal-and-layering.md) | z-index, stacking contexts, custom portal targets |
 
 ### Advanced & Quality
-
 | | |
 |---|---|
 | [Micro Frontend Support](docs/advanced/mfe-support.md) | Module Federation + iframed MFE bridge |
@@ -416,7 +410,7 @@ Contributions are welcome. Please open an issue before submitting large changes.
 
 - [ ] Demo app + GIF
 - [ ] npm publish (v1.0.0)
-- [ ] Analytics integration (step completion tracking)
+- [ ] Analytics integration
 - [ ] Persisted tours (resume after page refresh)
 - [ ] Multi-page / cross-route tours
 - [ ] User segmentation
