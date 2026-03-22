@@ -11,11 +11,36 @@
 
 ---
 
-<!--
-  TODO: Add a demo GIF here showing tooltip → spotlight → step navigation
-  Recommended size: 800×500px, <3MB
-  Tools: LICEcap, Kap, or ScreenToGif
--->
+## What a Tour Looks Like
+
+No GIF yet — here's the experience in plain text:
+
+```
+1. User lands on the dashboard
+   → A centered modal appears: "Welcome! Let's show you around."
+
+2. User clicks "Let's go"
+   → Page dims. The sidebar lights up with a cutout highlight.
+   → Tooltip: "Navigation — Use this to move between sections."
+
+3. User clicks "Next"
+   → Spotlight moves to the Create button.
+   → Tooltip: "Create a project — Click here to get started."
+
+4. User clicks "Next"
+   → Overlay lifts. A final modal: "You're all set!"
+```
+
+```
+Step 2 of 4                              [Skip tour]
+┌─────────────────────────────────────┐
+│  Navigation                         │
+│  Use this to move between sections. │
+│                          [←] [Next →]│
+└─────────────────────────────────────┘
+         ▲
+  [ Sidebar Nav ]   ← highlighted
+```
 
 ---
 
@@ -43,6 +68,17 @@ That's it. No config files. No tour objects. No build steps.
 
 ---
 
+## Philosophy
+
+Most onboarding tools are SaaS products that bolt onto your app from the outside. GuidePilot is the opposite — it lives inside your codebase, works like any other React library, and gives you complete control.
+
+- **Keep it simple** — data attributes over config objects where possible
+- **Keep it developer-first** — TypeScript types, hook API, testable utilities
+- **Keep it inside your codebase** — no dashboards, no scripts from a CDN, no lock-in
+- **Keep it safe** — fail-silent in production, XSS-sanitized by default, SSR-compatible
+
+---
+
 ## Why GuidePilot?
 
 Most tour libraries make you choose between **easy** (SaaS with lock-in) or **flexible** (DIY with complexity). GuidePilot gives you both.
@@ -56,6 +92,16 @@ Most tour libraries make you choose between **easy** (SaaS with lock-in) or **fl
 | Built-in XSS sanitization | ✅ | ❌ | ❌ | ❌ | ❌ |
 | No external SaaS dependency | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Bundle size (gzip) | **< 25KB** | ~35KB | ~45KB | ~25KB | ~20KB |
+
+---
+
+## Use Cases
+
+- **Product onboarding** — guide new users through a SaaS app on first login
+- **Feature announcements** — spotlight new UI after a release
+- **Admin dashboards** — walk internal users through complex workflows
+- **Internal tools** — create guided flows for non-technical staff
+- **Multi-step forms** — highlight fields in sequence and explain as you go
 
 ---
 
