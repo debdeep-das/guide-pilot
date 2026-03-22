@@ -74,6 +74,20 @@ npm install guide-pilot
 
 ---
 
+## 🧩 Integration Footprint
+
+GuidePilot requires minimal setup:
+
+- Add a provider at app root
+- Define a tour (config or data attributes)
+- Call `startTour()`
+
+No routing changes. No global refactoring. No external services.
+
+Most integrations take fewer than 10 lines of code.
+
+---
+
 ## 🚀 The Simplest Way to Use GuidePilot
 
 Wrap your app once. Annotate elements. Call `startTour`. No tour objects, no imports in every file.
