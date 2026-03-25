@@ -21,7 +21,7 @@
   "scripts": {
     "build": "tsc --noEmit && vite build",
     "dev": "vite build --watch",
-    "demo": "vite --config demo/vite.config.ts",
+    "demo:basic": "vite --config demo/basic/vite.config.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"

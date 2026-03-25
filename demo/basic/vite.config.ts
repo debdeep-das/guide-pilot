@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  root: 'demo',
+  root: 'demo/basic',
   server: { port: 5173 },
 });

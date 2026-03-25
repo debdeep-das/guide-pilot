@@ -410,11 +410,17 @@ Full single-document reference: [Developer's Guide](docs/developers-guide.md)
 git clone https://github.com/debdeep-das/guide-pilot
 cd guide-pilot
 npm install
-npm run demo       # start the demo app at http://localhost:5173
-npm run build      # build the library
-npm test           # run unit + integration tests
-npm run test:e2e   # run Playwright E2E tests
+npm run demo:basic  # basic demo — all 4 step types at http://localhost:5173
+npm run build       # build the library
+npm test            # run unit + integration tests
+npm run test:e2e    # run Playwright E2E tests
 ```
+
+### Examples
+
+| Demo | Command | Description |
+|---|---|---|
+| Basic | `npm run demo:basic` | All 4 step types — tooltip, spotlight, inline hint, modal |
 
 Contributions are welcome. Please open an issue before submitting large changes.
 

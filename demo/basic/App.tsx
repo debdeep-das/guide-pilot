@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useTour, TourConfig, StepType } from '../src/index';
+import { useTour, TourConfig, StepType } from '../../src/index';
 
 const demoTour: TourConfig = {
   id: 'demo',
@@ -83,7 +83,7 @@ export default function App() {
             fontSize: 14,
           }}
         >
-          {isActive ? 'Tour running...' : 'Start Tour'}
+          {isActive ? 'Tour running...' : 'Restart Tour'}
         </button>
         {isActive && (
           <button
