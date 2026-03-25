@@ -7,7 +7,7 @@
 [![license](https://img.shields.io/npm/l/guide-pilot)](LICENSE)
 [![CI](https://github.com/debdeep-das/guide-pilot/actions/workflows/ci.yml/badge.svg)](https://github.com/debdeep-das/guide-pilot/actions)
 
-> 🚧 **Status: In Development (Docs Phase)** — API is stable, implementation in progress.
+> 🚧 **Status: In Development** — Core implementation shipped. Not yet published to npm.
 
 ---
 
@@ -410,10 +410,10 @@ Full single-document reference: [Developer's Guide](docs/developers-guide.md)
 git clone https://github.com/debdeep-das/guide-pilot
 cd guide-pilot
 npm install
-npm run dev        # start demo app
+npm run demo       # start the demo app at http://localhost:5173
+npm run build      # build the library
 npm test           # run unit + integration tests
 npm run test:e2e   # run Playwright E2E tests
-npm run build      # build the library
 ```
 
 Contributions are welcome. Please open an issue before submitting large changes.

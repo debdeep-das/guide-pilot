@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTour, TourConfig, StepType } from '../src/index';
 
 const demoTour: TourConfig = {
@@ -56,6 +56,10 @@ const demoTour: TourConfig = {
 
 export default function App() {
   const { startTour, isActive, stopTour } = useTour();
+
+  useEffect(() => {
+    startTour(demoTour);
+  }, []);
 
   return (
     <div style={{ fontFamily: 'system-ui, sans-serif', maxWidth: 800, margin: '0 auto', padding: 32 }}>
