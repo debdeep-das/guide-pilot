@@ -1,0 +1,219 @@
+/* guide-pilot.css */
+
+:root {
+  --guide-pilot-bg: #ffffff;
+  --guide-pilot-color: #111827;
+  --guide-pilot-border-radius: 8px;
+  --guide-pilot-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --guide-pilot-border: 1px solid #e5e7eb;
+  --guide-pilot-font-size: 14px;
+  --guide-pilot-font-family: inherit;
+  --guide-pilot-padding: 16px;
+  --guide-pilot-min-width: 240px;
+  --guide-pilot-max-width: 360px;
+
+  --guide-pilot-title-font-size: 15px;
+  --guide-pilot-title-font-weight: 600;
+  --guide-pilot-title-color: #111827;
+
+  --guide-pilot-overlay-color: rgba(0, 0, 0, 0.5);
+  --guide-pilot-spotlight-radius: 4px;
+
+  --guide-pilot-btn-primary-bg: #2563eb;
+  --guide-pilot-btn-primary-color: #ffffff;
+  --guide-pilot-btn-primary-radius: 6px;
+  --guide-pilot-btn-ghost-color: #6b7280;
+
+  --guide-pilot-progress-color: #9ca3af;
+  --guide-pilot-progress-font-size: 12px;
+
+  --guide-pilot-arrow-size: 8px;
+
+  --guide-pilot-z-base: 9000;
+  --guide-pilot-z-overlay: var(--guide-pilot-z-base);
+  --guide-pilot-z-content: calc(var(--guide-pilot-z-base) + 1);
+  --guide-pilot-z-arrow: calc(var(--guide-pilot-z-base) + 2);
+}
+
+/* ── Tooltip ───────────────────────────────── */
+
+.guide-pilot-tooltip {
+  position: fixed;
+  background: var(--guide-pilot-bg);
+  color: var(--guide-pilot-color);
+  border-radius: var(--guide-pilot-border-radius);
+  box-shadow: var(--guide-pilot-shadow);
+  border: var(--guide-pilot-border);
+  padding: var(--guide-pilot-padding);
+  min-width: var(--guide-pilot-min-width);
+  max-width: var(--guide-pilot-max-width);
+  font-size: var(--guide-pilot-font-size);
+  font-family: var(--guide-pilot-font-family);
+  z-index: var(--guide-pilot-z-content);
+  box-sizing: border-box;
+}
+
+/* ── Inline Hint ───────────────────────────── */
+
+.guide-pilot-inline-hint {
+  background: var(--guide-pilot-bg);
+  color: var(--guide-pilot-color);
+  border-radius: var(--guide-pilot-border-radius);
+  box-shadow: var(--guide-pilot-shadow);
+  border: var(--guide-pilot-border);
+  padding: var(--guide-pilot-padding);
+  min-width: var(--guide-pilot-min-width);
+  max-width: var(--guide-pilot-max-width);
+  font-size: var(--guide-pilot-font-size);
+  font-family: var(--guide-pilot-font-family);
+  z-index: var(--guide-pilot-z-content);
+  box-sizing: border-box;
+}
+
+/* ── Spotlight content ─────────────────────── */
+
+.guide-pilot-spotlight-content {
+  position: fixed;
+  background: var(--guide-pilot-bg);
+  color: var(--guide-pilot-color);
+  border-radius: var(--guide-pilot-border-radius);
+  box-shadow: var(--guide-pilot-shadow);
+  border: var(--guide-pilot-border);
+  padding: var(--guide-pilot-padding);
+  min-width: var(--guide-pilot-min-width);
+  max-width: var(--guide-pilot-max-width);
+  font-size: var(--guide-pilot-font-size);
+  font-family: var(--guide-pilot-font-family);
+  z-index: var(--guide-pilot-z-content);
+  box-sizing: border-box;
+}
+
+/* ── Modal ─────────────────────────────────── */
+
+.guide-pilot-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--guide-pilot-overlay-color);
+  z-index: var(--guide-pilot-z-overlay);
+}
+
+.guide-pilot-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--guide-pilot-bg);
+  color: var(--guide-pilot-color);
+  border-radius: var(--guide-pilot-border-radius);
+  box-shadow: var(--guide-pilot-shadow);
+  border: var(--guide-pilot-border);
+  padding: calc(var(--guide-pilot-padding) * 1.5);
+  min-width: 320px;
+  max-width: 480px;
+  width: 90vw;
+  font-size: var(--guide-pilot-font-size);
+  font-family: var(--guide-pilot-font-family);
+  z-index: var(--guide-pilot-z-content);
+  box-sizing: border-box;
+}
+
+/* ── Step content ──────────────────────────── */
+
+.guide-pilot-step-title {
+  font-size: var(--guide-pilot-title-font-size);
+  font-weight: var(--guide-pilot-title-font-weight);
+  color: var(--guide-pilot-title-color);
+  margin-bottom: 6px;
+}
+
+.guide-pilot-step-body {
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.guide-pilot-step-body p {
+  margin: 0;
+}
+
+.guide-pilot-progress {
+  font-size: var(--guide-pilot-progress-font-size);
+  color: var(--guide-pilot-progress-color);
+  margin-bottom: 10px;
+}
+
+/* ── Nav buttons ────────────────────────────── */
+
+.guide-pilot-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.guide-pilot-nav-arrows {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.guide-pilot-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: var(--guide-pilot-btn-primary-radius);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  transition: opacity 0.15s;
+}
+
+.guide-pilot-btn:hover {
+  opacity: 0.85;
+}
+
+.guide-pilot-btn-primary {
+  background: var(--guide-pilot-btn-primary-bg);
+  color: var(--guide-pilot-btn-primary-color);
+}
+
+.guide-pilot-btn-ghost {
+  color: var(--guide-pilot-btn-ghost-color);
+}
+
+.guide-pilot-btn-ghost:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* ── Arrow ──────────────────────────────────── */
+
+.guide-pilot-arrow {
+  fill: var(--guide-pilot-bg);
+  stroke: #e5e7eb;
+  stroke-width: 1;
+}
+
+/* ── Dark mode ──────────────────────────────── */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --guide-pilot-bg: #1f2937;
+    --guide-pilot-color: #f9fafb;
+    --guide-pilot-border: 1px solid #374151;
+    --guide-pilot-title-color: #f9fafb;
+    --guide-pilot-btn-ghost-color: #9ca3af;
+    --guide-pilot-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  .guide-pilot-btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .guide-pilot-arrow {
+    fill: #1f2937;
+    stroke: #374151;
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "name": "guide-pilot",
+  "version": "0.1.0",
+  "description": "Lightweight React product tour library — developer-first, MFE-compatible, SSR-safe",
+  "type": "module",
+  "main": "./dist/guide-pilot.cjs.js",
+  "module": "./dist/guide-pilot.es.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/guide-pilot.es.js",
+      "require": "./dist/guide-pilot.cjs.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./styles": "./dist/guide-pilot.css",
+    "./bridge": {
+      "import": "./dist/guide-pilot.bridge.es.js",
+      "types": "./dist/types/bridge/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc --noEmit && vite build",
+    "dev": "vite build --watch",
+    "demo": "vite --config demo/vite.config.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "dependencies": {
+    "@floating-ui/react": "^0.26.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "typescript": "^5.5.0",
+    "vite": "^5.4.0",
+    "vite-plugin-dts": "^4.0.0",
+    "vitest": "^2.1.0"
+  },
+  "files": ["dist"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/debdeep-das/guide-pilot"
+  },
+  "keywords": ["react", "product-tour", "onboarding", "tooltip", "spotlight", "mfe", "tour"]
+}
