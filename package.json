@@ -27,7 +27,9 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
   },
-  "sideEffects": ["./dist/guide-pilot.css"],
+  "sideEffects": [
+    "./dist/guide-pilot.css"
+  ],
   "peerDependencies": {
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"
@@ -58,7 +60,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/debdeep-das/guide-pilot"
+    "url": "git+https://github.com/debdeep-das/guide-pilot.git"
   },
   "keywords": [
     "react",
