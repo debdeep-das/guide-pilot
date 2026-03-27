@@ -1,0 +1,11 @@
+/* Demo theme overrides — shows how an app customises GuidePilot via CSS variables */
+:root {
+  --guide-pilot-tooltip-bg:        #1e1e2e;
+  --guide-pilot-tooltip-color:     #cdd6f4;
+  --guide-pilot-tooltip-border:    1px solid #313244;
+  --guide-pilot-tooltip-radius:    12px;
+  --guide-pilot-btn-primary-bg:    #cba6f7;
+  --guide-pilot-btn-primary-color: #1e1e2e;
+  --guide-pilot-btn-ghost-color:   #a6adc8;
+  --guide-pilot-overlay-color:     rgba(0, 0, 0, 0.75);
+}

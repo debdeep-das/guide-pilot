@@ -56,7 +56,6 @@ const demoTour: TourConfig = {
 
 export default function App() {
   const { startTour, isActive, stopTour } = useTour();
-
   useEffect(() => {
     startTour(demoTour);
   }, []);
