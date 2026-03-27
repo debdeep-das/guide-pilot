@@ -375,6 +375,7 @@ GuidePilot lives inside your codebase, not outside it.
 | [Getting Started](docs/getting-started.md) | Install + all setup options |
 | [Basic Tour Guide](docs/guides/basic-tour.md) | Step-by-step: build your first tour |
 | [Programmatic Tour Guide](docs/guides/programmatic-tour.md) | Async navigation, dynamic steps, callbacks |
+| [Tour Frequency](docs/guides/tour-frequency.md) | Show a tour N times, once only, or per-user |
 
 ### API Reference
 | | |
@@ -421,6 +422,26 @@ npm run test:e2e    # run Playwright E2E tests
 | Demo | Command | Description |
 |---|---|---|
 | Basic | `npm run demo:basic` | All 4 step types — tooltip, spotlight, inline hint, modal |
+
+The basic demo includes a [`theme.css`](demo/basic/theme.css) that overrides the default GuidePilot CSS variables — showing how any app can customise the tour appearance via a stylesheet with no code changes:
+
+```css
+/* demo/basic/theme.css */
+:root {
+  --guide-pilot-tooltip-bg:        #1e1e2e;
+  --guide-pilot-tooltip-color:     #cdd6f4;
+  --guide-pilot-btn-primary-bg:    #cba6f7;
+  --guide-pilot-btn-primary-color: #1e1e2e;
+  --guide-pilot-overlay-color:     rgba(0, 0, 0, 0.75);
+}
+```
+
+Import order matters — your overrides must come **after** `guide-pilot/styles`:
+
+```ts
+import 'guide-pilot/styles'; // library defaults
+import './theme.css';        // your overrides — wins due to cascade
+```
 
 Contributions are welcome. Please open an issue before submitting large changes.
 
