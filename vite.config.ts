@@ -27,10 +27,9 @@ export default defineConfig({
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        },
+        globals: { react: 'React', 'react-dom': 'ReactDOM' },
+        assetFileNames: (assetInfo) =>
+          assetInfo.name === 'style.css' ? 'guide-pilot.css' : (assetInfo.name ?? 'asset'),
       },
     },
     sourcemap: true,
