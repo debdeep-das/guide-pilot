@@ -34,9 +34,15 @@
     "@floating-ui/react": "^0.26.0"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.0",
+    "@vitest/coverage-v8": "^2.1.9",
+    "jsdom": "^29.0.1",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "typescript": "^5.5.0",
@@ -44,11 +50,21 @@
     "vite-plugin-dts": "^4.0.0",
     "vitest": "^2.1.0"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/debdeep-das/guide-pilot"
   },
-  "keywords": ["react", "product-tour", "onboarding", "tooltip", "spotlight", "mfe", "tour"]
+  "keywords": [
+    "react",
+    "product-tour",
+    "onboarding",
+    "tooltip",
+    "spotlight",
+    "mfe",
+    "tour"
+  ]
 }
