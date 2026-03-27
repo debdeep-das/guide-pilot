@@ -33,8 +33,11 @@ function sanitizeNode(node: Node, output: string[]): void {
   const el = node as Element;
   const tag = el.tagName.toLowerCase();
 
+  const STRIP_WITH_CONTENT = new Set(['script', 'style', 'iframe', 'object', 'embed']);
+  if (STRIP_WITH_CONTENT.has(tag)) return;
+
   if (!ALLOWED_TAGS.has(tag)) {
-    // Still process children for allowed inline content
+    // Strip tag but keep children (e.g. div wrapping inline content)
     node.childNodes.forEach((child) => sanitizeNode(child, output));
     return;
   }
