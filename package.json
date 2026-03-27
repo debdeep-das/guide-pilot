@@ -1,6 +1,6 @@
 {
   "name": "guide-pilot",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "Lightweight React product tour library — developer-first, MFE-compatible, SSR-safe",
   "type": "module",
   "main": "./dist/guide-pilot.cjs.js",
