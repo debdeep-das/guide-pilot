@@ -25,6 +25,8 @@
     "demo:basic": "vite --config demo/basic/vite.config.ts",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "typecheck": "tsc --noEmit"
   },
   "sideEffects": [
@@ -38,6 +40,7 @@
     "@floating-ui/react": "^0.26.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
