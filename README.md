@@ -5,9 +5,9 @@
 [![npm version](https://img.shields.io/npm/v/guide-pilot.svg)](https://www.npmjs.com/package/guide-pilot)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/guide-pilot)](https://bundlephobia.com/package/guide-pilot)
 [![license](https://img.shields.io/npm/l/guide-pilot)](LICENSE)
-[![CI](https://github.com/debdeep-das/guide-pilot/actions/workflows/ci.yml/badge.svg)](https://github.com/debdeep-das/guide-pilot/actions)
+[![CI](https://github.com/debdeep-das/guide-pilot/actions/workflows/publish.yml/badge.svg)](https://github.com/debdeep-das/guide-pilot/actions)
 
-> 🚧 **Status: In Development** — Core implementation shipped. Not yet published to npm.
+> 🚀 **Status: Alpha** — Published on npm. Core implementation complete, E2E tested. Working towards beta.
 
 ---
 
@@ -228,33 +228,34 @@ const dashboardTour: TourConfig = {
 
 ## What a Tour Looks Like
 
-No GIF yet — here's the experience in plain text:
+![GuidePilot demo](demo/assets/demo.gif)
 
-```
-1. User lands on the dashboard
-   → Centered modal: "Welcome! Let's show you around."
+Try it yourself in 30 seconds:
 
-2. User clicks "Let's go"
-   → Page dims. Sidebar highlighted with a cutout.
-   → Tooltip: "Navigation — Use this to move between sections."
-
-3. User clicks "Next"
-   → Spotlight moves to the Create button.
-   → Tooltip: "Create a project — Click here to get started."
-
-4. User clicks "Next"
-   → Overlay lifts. Final modal: "You're all set!"
+```bash
+git clone https://github.com/debdeep-das/guide-pilot
+cd guide-pilot
+npm install
+npm run demo:basic
 ```
 
+Open **http://localhost:5173** — the tour auto-starts and walks through all 4 step types.
+
 ```
-Step 2 of 4                              [Skip tour]
-┌─────────────────────────────────────┐
-│  Navigation                         │
-│  Use this to move between sections. │
-│                          [←] [Next →]│
-└─────────────────────────────────────┘
-         ▲
-  [ Sidebar Nav ]   ← highlighted
+1. User lands on the page
+   → Centered modal: "Welcome to GuidePilot!"
+
+2. Clicks "Let's go!"
+   → Tooltip appears on the "New Project" button.
+
+3. Clicks "Next →"
+   → Page dims. Analytics panel spotlighted with a cutout.
+
+4. Clicks "Next →"
+   → Spotlight moves to the search input. Input remains interactive.
+
+5. Clicks "Next →"
+   → Inline hint appears near the help link. No overlay.
 ```
 
 ---
@@ -449,8 +450,17 @@ Contributions are welcome. Please open an issue before submitting large changes.
 
 ## Roadmap
 
-- [ ] Demo app + GIF
-- [ ] npm publish (v1.0.0)
+### Done
+- [x] Core implementation — store, hooks, 4 step types, Provider, bridge
+- [x] Demo app with stylesheet-based theming
+- [x] 103 unit + integration tests
+- [x] 13 Playwright E2E tests
+- [x] npm publish (`guide-pilot@alpha`)
+- [x] GitHub Actions CI/CD — auto publish on release tag
+
+### Planned
+- [ ] Beta release (v1.0.0-beta.1)
+- [ ] Stable release (v1.0.0)
 - [ ] Analytics integration
 - [ ] Persisted tours (resume after page refresh)
 - [ ] Multi-page / cross-route tours
