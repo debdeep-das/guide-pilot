@@ -29,8 +29,14 @@ jobs:
         run: npm run build
 
       - name: Publish (alpha)
-        if: contains(github.event.release.tag_name, 'alpha') || contains(github.event.release.tag_name, 'beta')
+        if: contains(github.event.release.tag_name, 'alpha')
         run: npm publish --tag alpha --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish (beta)
+        if: contains(github.event.release.tag_name, 'beta')
+        run: npm publish --tag beta --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
